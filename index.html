@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baper Bank </title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <h1 class=" text-5xl text-center mt-4 uppercase ">Functional<span class="text-red-500 font-medium">Bpaer BAnk</span></h1>
+    
+    <main>
+        <section class="mt-10">
+            <div class="grid grid-cols-3 gap-4 w-8/12 mx-auto lg:grid-cols-3 lg:gap-4 lg:w-9/12 lg:mx-auto">
+
+                <div class="p-4 lg:p-8 text-white bg-green-400 rounded-xl">
+                    <h4 class="mr-2 pt-5 text-sm lg:text-2xl">Deposit</h4>
+                    <h2  class=" text-2xl flex lg:text-5xl">$<span id="deposite">00</span></h2>
+                </div>
+                
+                <div class="p-4 lg:p-8 text-white rounded-xl bg-yellow-500">
+                    <h4 class="mr-2 flex ml-2 justify-end mx-auto w-full pt-5 text-kg lg:justify-start lg:text-2xl">Withdraw</h4>
+                    <h2  class="text-2xl items-center justify-center pl-3 mr-5 flex lg:text-5xl lg:mr-0  lg:justify-start lg:pl-0">$<span id="wit">00</span></h2>
+                </div>
+                 
+                <div class="p-6 pr-5 lg:p-8 text-white rounded-xl bg-violet-500">
+                    <h4 class="mr-2 flex justify-end mx-auto w-full pt-5 text-sm lg:justify-start lg:text-2xl">Balance</h4>
+                    <h2 class="text-2xl justify-center pl-3 mr-5 flex lg:text-5xl lg:mr-0  lg:justify-start lg:pl-0">$<span id="balance" >1240</span></h2>
+                </div>
+            </div>
+        </section>
+        <section class="mt-12">
+            <div class="grid grid-cols-2  gap-4 w-8/12 mx-auto lg:grid-cols-2 lg:gap-4 lg:w-9/12 lg:mx-auto">
+                <div class=" p-4 bg-fuchsia-400 lg:p-8  rounded-xl">
+                    <h4 class=" text-lg lg:text-2xl mb-3 text-white"> Please Deposit</h4>
+                    <input class=" p-0.5 w-24 mb-3 text-xs lg:w-7/12 block text-yellow lg:px-4 lg:mb-3 lg:py-1 lg:text-sm" type="text" name="" placeholder="$Your deposit Amount" id="btn-deposit">
+                    <button class="bg-sky-700 px-2 text-sm lg:px-4  py-0.5 lg:text-base lg:py-1 text-white font-medium rounded-lg hover:bg-green-400 " id="deposit_submit">Deposit</button>
+                </div>
+                
+                <div class=" p-4 bg-sky-400 lg:p-8 rounded-xl">
+                    <h4 class=" text-lg lg:text-2xl mb-3 text-white "> Please Withdraw</h4>
+                    <input class=" w-24 text-xs p-0.5 lg:w-7/12 block lg:px-4 mb-3 lg:py-1 lg:text-sm" type="text" placeholder="$Your withdraw amount" id="btn-withdraw">
+                    <button class="  bg-sky-700 text-sm  lg:text-base  px-2 py-0.5 lg:px-4 lg:py-1 text-white font-medium rounded-lg hover:bg-amber-600 " id="Withdraw_submit">withdraw</button>
+                </div>
+                
+            </div>
+        </section>
+    </main>
+    <script>
+
+        document.getElementById('deposit_submit').addEventListener('click',function(){
+            let btn_deposit = document.getElementById("btn-deposit");
+            let btn_deposti_value_store= parseFloat(btn_deposit.value);
+            // console.log( typeof btn_deposti_value_store);
+            
+            let deposit=document.getElementById("deposite");
+        
+             let deposit_value=parseFloat(deposit.innerText);
+            //  console.log(deposit_value)
+            let total_deposit=btn_deposti_value_store + deposit_value;
+            deposit.innerText=total_deposit;
+
+            btn_deposit.value="";
+         
+                        
+            let balance=document.getElementById('balance');
+            let balance_value=parseFloat(balance.innerText);
+
+            let total_balance= btn_deposti_value_store + balance_value;
+            balance.innerText=total_balance;
+
+        })
+        document.getElementById('Withdraw_submit').addEventListener('click',function(){
+            let withdraw=document.getElementById('btn-withdraw');
+            let withdraw_value=parseFloat(withdraw.value);
+            // console.log(withdrew_value);
+
+            let withdraw_amount_total =document.getElementById('wit');
+            let withdraw_amount_total_value = parseFloat(withdraw_amount_total.innerText);
+
+            let withdraw_total =withdraw_value + withdraw_amount_total_value;
+            withdraw_amount_total.innerText = withdraw_total;
+            withdraw.value='';
+
+            let balance =document.getElementById('balance');
+            let balance_value= parseFloat(balance.innerText);
+
+            let total_remaining =  balance_value - withdraw_value  ;
+            balance.innerText=total_remaining
+        })
+    </script>
+</body>
+</html>
